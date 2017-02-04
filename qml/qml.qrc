@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>Screens/Screen_KartRpiDebug1.qml</file>
+        <file>Components/Compon_Button.qml</file>
+    </qresource>
+</RCC>
