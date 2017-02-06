@@ -55,13 +55,25 @@ Item {
         }
 
         Compon_Button{
-            id: btnD1
-            labelText: "-"
+            id: btnSpeed
+            labelText: "Speed"
+            onBtnRelease: {
+                SCREENCONTROLLER.handleSpeedBtnPress();
+                consoleDisplay.clear();
+                consoleDisplay.append(VIEWCONSOLEMODEL.consoleData);
+                consoleDisplay.append("");
+            }
         }
 
         Compon_Button{
-            id: btnD2
-            labelText: "-"
+            id: btnReadTest
+            labelText: "Read Test"
+            onBtnRelease: {
+                SCREENCONTROLLER.handleReadInputTest();
+                consoleDisplay.clear();
+                consoleDisplay.append(VIEWCONSOLEMODEL.consoleData);
+                consoleDisplay.append("");
+            }
         }
     }
 
@@ -75,14 +87,8 @@ Item {
         spacing: 20
 
         Compon_Button{
-            id: btnSpeed
-            labelText: "Speed"
-            onBtnRelease: {
-                SCREENCONTROLLER.handleSpeedBtnPress();
-                consoleDisplay.clear();
-                consoleDisplay.append(VIEWCONSOLEMODEL.consoleData);
-                consoleDisplay.append("");
-            }
+            id: btnD
+            labelText: "-"
         }
 
         Compon_Button{

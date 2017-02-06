@@ -7,6 +7,10 @@
 #include <QTimer>
 #include <QDebug>
 
+#include "kartpi_commondefs.h"
+
+#define KARTRPI_ENGINE KartRpi_Engine::Instance()
+
 class KartRpi_Engine : public QObject
 {
     Q_OBJECT
@@ -15,6 +19,8 @@ public:
     void init(QQmlApplicationEngine *arg_engine);
     void connectSignalsAndSlots();
     void startKartTimer(int arg);
+    void callbackFromInterrupt();
+    void callbackFromInterrupt2();
 
 signals:
 

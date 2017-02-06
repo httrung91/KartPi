@@ -7,6 +7,7 @@
 #include "kartrpi_consolemodel.h"
 #include "kartrpi_wiringpiwrapper.h"
 #include "kartrpi_engine.h"
+#include "kartpi_commondefs.h"
 
 class KartRpi_ScreenController : public QObject
 {
@@ -18,6 +19,7 @@ public:
     Q_INVOKABLE void handleFireBtnPress();
     Q_INVOKABLE void handleSpeedBtnPress();
     Q_INVOKABLE void handleShieldBtnPress();
+    Q_INVOKABLE void handleReadInputTest();
 
 signals:
 

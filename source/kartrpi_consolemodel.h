@@ -4,6 +4,8 @@
 #include <QObject>
 #include <QDebug>
 
+#define KARTRPI_CONSOLE KartRpi_ConsoleModel::Instance()
+
 class KartRpi_ConsoleModel : public QObject
 {
     Q_OBJECT

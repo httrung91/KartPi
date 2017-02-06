@@ -16,6 +16,7 @@ RESOURCES += \
     res/res.qrc
 
 linux-oe-g++: {
+    DEFINES += TARGET_BUILD
     message("FOR RASPBERRY")\
     INCLUDEPATH +=  ${SDKTARGETSYSROOT}/usr/include
     LIBS += -L${SDKTARGETSYSROOT}/usr/lib -lwiringPi -lwiringPiDev
@@ -52,6 +53,7 @@ HEADERS += \
     source/kartrpi_engine.h \
     source/kartrpi_screencontroller.h \
     source/kartrpi_consolemodel.h \
-    source/kartrpi_wiringpiwrapper.h
+    source/kartrpi_wiringpiwrapper.h \
+    source/kartpi_commondefs.h
 
 

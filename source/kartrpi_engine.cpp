@@ -20,9 +20,12 @@ void KartRpi_Engine::init(QQmlApplicationEngine *arg_engine)
     KartRpi_ConsoleModel::Instance().init();
     KartRpi_WiringPiWrapper::Instance().init();
 
-    KartRpi_WiringPiWrapper::Instance().setPinMode(0, 1);
-    KartRpi_WiringPiWrapper::Instance().setPinMode(1, 1);
-    KartRpi_WiringPiWrapper::Instance().setPinMode(2, 1);
+    KartRpi_WiringPiWrapper::Instance().setPinMode(PIN_0, OUTPUT);
+    KartRpi_WiringPiWrapper::Instance().setPinMode(PIN_2, OUTPUT);
+    KartRpi_WiringPiWrapper::Instance().setPinMode(PIN_3, OUTPUT);
+    KartRpi_WiringPiWrapper::Instance().setPinMode(PIN_4, INPUT);
+    KARTRPI_WIRINGPI.setInterruptPin(PIN_5);
+    KARTRPI_WIRINGPI.setInterruptPin(PIN_6);
 
     m_fireTimer = new QTimer();
     m_fireTimer->setInterval(1000);
@@ -60,19 +63,31 @@ void KartRpi_Engine::startKartTimer(int arg)
     }
 }
 
+void KartRpi_Engine::callbackFromInterrupt()
+{
+    qDebug() << "Callback from WRPI Interrupt...";
+    KARTRPI_CONSOLE.appendConsoleData("Interrupt from PIN5");
+}
+
+void KartRpi_Engine::callbackFromInterrupt2()
+{
+    qDebug() << "Callback from WRPI Interrupt...";
+    KARTRPI_CONSOLE.appendConsoleData("Interrupt from PIN6");
+}
+
 void KartRpi_Engine::onFireTimerTriggered()
 {
-    KartRpi_WiringPiWrapper::Instance().writeValueToPin(0,0);
+    KartRpi_WiringPiWrapper::Instance().writeValueToPin(PIN_0,LOW);
 }
 
 void KartRpi_Engine::onSpeedTimerTriggered()
 {
-    KartRpi_WiringPiWrapper::Instance().writeValueToPin(1,0);
+    KartRpi_WiringPiWrapper::Instance().writeValueToPin(PIN_2,LOW);
 }
 
 void KartRpi_Engine::onShieldTimerTriggered()
 {
-    KartRpi_WiringPiWrapper::Instance().writeValueToPin(2,0);
+    KartRpi_WiringPiWrapper::Instance().writeValueToPin(PIN_3,LOW);
 }
 
 KartRpi_Engine::KartRpi_Engine(QObject *parent) : QObject(parent)
