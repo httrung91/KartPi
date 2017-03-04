@@ -19,12 +19,24 @@ public:
     void init(QQmlApplicationEngine *arg_engine);
     void connectSignalsAndSlots();
     void startKartTimer(int arg);
+
+    //callBack sequence
+    void callbackFromHitbyLaser();
+    void callbackFromLaserBeacon();
+    void callbackFromShieldBeacon();
+    void callbackFromSpeedBeacon();
+    void callbackFromBombBeacon();
+    void callbackFromTimeBeacon();
+
     void callbackFromInterrupt();
     void callbackFromInterrupt2();
 
 signals:
+    void hitByBomb();
 
 public slots:
+    void onDebounceLaserBeacon();
+
     void onFireTimerTriggered();
     void onSpeedTimerTriggered();
     void onShieldTimerTriggered();
@@ -35,8 +47,10 @@ private:
     //Qml control
     QQmlApplicationEngine *m_engine;
     QTimer *m_fireTimer;
-    QTimer *m_speedTimer;
-    QTimer *m_shieldTimer;
+
+    QTimer *m_debounceLaserBeacon;
+
+    int m_testIRSCount;
 };
 
 #endif // KARTRPI_ENGINE_H

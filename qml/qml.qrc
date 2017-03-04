@@ -3,5 +3,7 @@
         <file>main.qml</file>
         <file>Screens/Screen_KartRpiDebug1.qml</file>
         <file>Components/Compon_Button.qml</file>
+        <file>Screens/Screen_KartRpiSimulator1.qml</file>
+        <file>Screens/Screen_KartRpiWelcome.qml</file>
     </qresource>
 </RCC>

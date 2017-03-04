@@ -22,6 +22,17 @@ Item {
         }
     }
 
+    Compon_Button{
+        id: gotoDebug
+        labelText: "Simulator"
+        anchors.top: screenLabelContainer1.top
+        anchors.right: parent.right
+        anchors.rightMargin: 500
+        onBtnRelease: {
+            SCREENCONTROLLER.handleChangeScreen("qrc:/Screens/Screen_KartRpiSimulator1.qml");
+        }
+    }
+
     Column{
         id: leftBtnColumn
         width: 180
@@ -87,23 +98,43 @@ Item {
         spacing: 20
 
         Compon_Button{
-            id: btnD
-            labelText: "-"
+            id: addLaserBtn
+            labelText: "Laser+"
+            onBtnRelease: {
+                SCREENCONTROLLER.handleLaserBeaconPress();
+            }
         }
 
         Compon_Button{
-            id: btnD3
-            labelText: "-"
+            id: addShieldBtn
+            labelText: "Shield+"
+            onBtnRelease: {
+                SCREENCONTROLLER.handleShieldBeaconPress();
+            }
         }
 
         Compon_Button{
-            id: btnD4
-            labelText: "-"
+            id: addSpeedBtn
+            labelText: "Speed+"
+            onBtnRelease: {
+                SCREENCONTROLLER.handleSpeedBeaconPress();
+            }
         }
 
         Compon_Button{
-            id: btnD5
-            labelText: "-"
+            id: addBombBtn
+            labelText: "Bomb+"
+            onBtnRelease: {
+                SCREENCONTROLLER.handleBombBeaconPress();
+            }
+        }
+
+        Compon_Button{
+            id: addTimeBtn
+            labelText: "Time+"
+            onBtnPressed: {
+                SCREENCONTROLLER.handleTimeBeaconPress();
+            }
         }
     }
 

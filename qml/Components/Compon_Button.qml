@@ -12,6 +12,9 @@ Item {
      *******************************/
 
     property bool   iconDisplay         : false
+    property bool   isDisabled          : false
+    property bool   isPressed           : false
+    property bool   isSelected          : false
 
     property string labelText           : "Button"
     property int    labelSize           : 24
@@ -19,7 +22,7 @@ Item {
     property string labelColor_N        : "white"
     property string labelColor_P        : "black"
     property string labelColor_S        : ""
-    property string labelColor_D        : ""
+    property string labelColor_D        : "grey"
 
     property string backgroundImage_N   : ""
     property string backgroundImage_P   : ""
@@ -37,10 +40,29 @@ Item {
     signal btnPressed()
     signal btnRelease()
 
+    /*******************************
+     *      Function               *
+     *******************************/
+
+
     Rectangle{
         id              : backgroundColor
         anchors.fill    : parent
-        color           :  backgroundColor_N
+        color           : {
+            if(isDisabled){
+                return backgroundColor_D
+            }
+            else if(isPressed){
+                return backgroundColor_P
+            }
+            else if(isSelected){
+                return backgroundColor_S
+            }
+            else{
+                return backgroundColor_N
+            }
+            //isDisabled ? backgroundColor_D : backgroundColor_N
+        }
         border.width    : 1
         border.color    : "transparent"
     }
@@ -58,18 +80,24 @@ Item {
         id: touchOp
         anchors.fill: parent
         onPressed: {
-            backgroundColor.color = backgroundColor_P
-            backgroundColor.border.color = "black"
-            btnLabel.color = labelColor_P
+            if(!isDisabled){
+                //backgroundColor.color = backgroundColor_P
+                isPressed = true
+                backgroundColor.border.color = "black"
+                btnLabel.color = labelColor_P
 
-            btnPressed()
+                btnPressed()
+            }
         }
         onReleased: {
-            backgroundColor.color = backgroundColor_N
-            backgroundColor.border.color = "transparent"
-            btnLabel.color = labelColor_N
+            if(!isDisabled){
+                //backgroundColor.color = backgroundColor_N
+                isPressed = false
+                backgroundColor.border.color = "transparent"
+                btnLabel.color = labelColor_N
 
-            btnRelease()
+                btnRelease()
+            }
         }
 
     }

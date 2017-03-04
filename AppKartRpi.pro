@@ -9,7 +9,13 @@ SOURCES += \
     source/kartrpi_engine.cpp \
     source/kartrpi_screencontroller.cpp \
     source/kartrpi_consolemodel.cpp \
-    source/kartrpi_wiringpiwrapper.cpp
+    source/kartrpi_wiringpiwrapper.cpp \
+    source/kartrpi_lasermodel.cpp \
+    source/kartrpi_shieldmodel.cpp \
+    source/kartrpi_bombmodel.cpp \
+    source/kartrpi_speedmodel.cpp \
+    source/kartrpi_timemodel.cpp \
+    source/kartrpi_kartstatusmodel.cpp
 
 RESOURCES += \
     qml/qml.qrc \
@@ -54,6 +60,12 @@ HEADERS += \
     source/kartrpi_screencontroller.h \
     source/kartrpi_consolemodel.h \
     source/kartrpi_wiringpiwrapper.h \
-    source/kartpi_commondefs.h
+    source/kartpi_commondefs.h \
+    source/kartrpi_lasermodel.h \
+    source/kartrpi_shieldmodel.h \
+    source/kartrpi_bombmodel.h \
+    source/kartrpi_speedmodel.h \
+    source/kartrpi_timemodel.h \
+    source/kartrpi_kartstatusmodel.h
 
 

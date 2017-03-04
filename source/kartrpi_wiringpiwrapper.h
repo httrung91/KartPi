@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QDebug>
+#include <QTimer>
 
 #ifdef TARGET_BUILD
 #include <wiringPi.h>
@@ -34,8 +35,19 @@ public slots:
 
 private:
     explicit KartRpi_WiringPiWrapper(QObject *parent = 0);
+
+    //test
     static void interruptCallBack();
     static void interruptCallBack2();
+
+    //input pin
+    static void interrupt_pin22(); //hitted by laser
+    static void interrupt_pin24(); //laser
+    static void interrupt_pin25(); //shield
+    static void interrupt_pin27(); //speed
+    static void interrupt_pin28(); //bomb
+    static void interrupt_pin29(); //time
+
 };
 
 #endif // KARTRPI_WIRINGPIWRAPPER_H
